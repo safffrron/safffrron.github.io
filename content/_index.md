@@ -10,7 +10,7 @@ draft: false
   <!-- Intro Text -->
   <div style="flex: 1; min-width: 250px;">
   
-<p style="font-size: 2em; margin-bottom: 1.5rem;">
+<p style="font-size: 2em; margin-bottom: 2rem;">
   <span style=" font-weight: bold;">Kislay</span> Aditya Oj
 </p>
 
