@@ -1,4 +1,4 @@
-baseURL: "http://localhost:1313/"
+baseURL: "https://safffrron.github.io/"
 languageCode: "en-us"
 title: "Kislay"
 theme: "PaperMod"
