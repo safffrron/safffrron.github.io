@@ -14,7 +14,6 @@ outputs:
     - RSS
     - JSON
 
-relativeURLs: true
 canonifyURLs: true
 
 
