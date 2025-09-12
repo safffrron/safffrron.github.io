@@ -16,4 +16,39 @@ document.querySelectorAll("nav a").forEach(link =&gt; {
 link.addEventListener("mouseover", () =&gt; link.style.borderBottomColor = "#333");
 link.addEventListener("mouseout", () =&gt; link.style.borderBottomColor = "transparent");
 });
-&lt;/script&gt;</description></item><item><title>Blog and Reviews</title><link>https://safffrron.github.io/hobbies/books/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/hobbies/books/</guid><description/></item><item><title>Courses</title><link>https://safffrron.github.io/academics/courses/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/academics/courses/</guid><description/></item><item><title>Quotes</title><link>https://safffrron.github.io/hobbies/quotes/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/hobbies/quotes/</guid><description/></item><item><title>Tier-list</title><link>https://safffrron.github.io/hobbies/anime/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/hobbies/anime/</guid><description>&lt;p&gt;Just my weird taste, don&amp;rsquo;t come after me !!&lt;/p&gt;</description></item></channel></rss>
+&lt;/script&gt;</description></item><item><title>Blog and Reviews</title><link>https://safffrron.github.io/hobbies/books/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/hobbies/books/</guid><description/></item><item><title>Courses</title><link>https://safffrron.github.io/academics/courses/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/academics/courses/</guid><description/></item><item><title>CV</title><link>https://safffrron.github.io/academics/cv/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/academics/cv/</guid><description>&lt;style&gt;
+.content {
+/* width: 80%; */
+/* padding-right: 25%; */
+margin-top: 4px;
+padding-top: 20px;
+}
+.content p {
+font-size: 14px;
+color: #333;
+line-height: 1.05;
+font-weight: 599;
+margin-top: 10px;
+padding-top: 0px;
+margin-bottom: 10px;
+padding-bottom: 200px;
+}
+.content iframe {
+width: 700px;
+height: 820px;
+margin-top: 0px;
+margin-right: 30px;
+margin-bottom: 0px;
+border: #000000;
+border-style: double;
+}
+&lt;/style&gt;
+&lt;div class="container"&gt;
+&lt;div class="content"&gt;
+&lt;div class="page"&gt;
+&lt;iframe src="https://drive.google.com/file/d/1B23NsyBunIbErQbdG-CM18BdK0x6hhzY/preview" allow="autoplay"&gt;&lt;/iframe&gt;
+&lt;p&gt;Last Updated : July , 2023&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Projects</title><link>https://safffrron.github.io/academics/projects/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/academics/projects/</guid><description/></item><item><title>Publications</title><link>https://safffrron.github.io/academics/publications/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/academics/publications/</guid><description>&lt;h4 id="drafting-"&gt;drafting &amp;hellip;&lt;/h4&gt;</description></item><item><title>Quotes</title><link>https://safffrron.github.io/hobbies/quotes/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/hobbies/quotes/</guid><description/></item><item><title>Tier-list</title><link>https://safffrron.github.io/hobbies/anime/</link><pubDate>Thu, 11 Sep 2025 22:50:45 +0530</pubDate><guid>https://safffrron.github.io/hobbies/anime/</guid><description>&lt;p&gt;Just my weird taste, don&amp;rsquo;t come after me !!&lt;/p&gt;</description></item></channel></rss>
