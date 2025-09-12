@@ -24,7 +24,7 @@ Check out my [CV](/academics/cv/), [Projects](/academics/projects/), and [Blogs]
   </div>
 
 <figure style="text-align:center; margin-top:1rem;">
-  <img src="/images/profile.jpg" alt="Kislay" style="width:300px;">
+  <img src="/images/profile.JPG" alt="Kislay" style="width:300px;">
   <figcaption style=" font-weight: normal;">
     kislay@cse.iitb.ac.in
   </figcaption>
