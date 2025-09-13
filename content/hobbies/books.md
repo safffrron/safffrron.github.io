@@ -11,6 +11,22 @@ title = 'Blog and Reviews'
 <div style=" margin:auto; gap:20px;">
 
   <!-- Card Template -->
+  
+  <div style="flex:1 1 300px; border:1px solid #eee; border-radius:8px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:all 0.2s ease; background:#fff;">
+    <h3 style="margin:0 0 10px 0; font-size:20px; color:#222;">Project Hail Mary</h3>
+    <p style="margin:0 0 15px 0; font-size:14px; color:#666;">
+      by Andy Weir • Currently Reading 
+    </p>
+    <p style="margin:0 0 15px 0; font-size:15px; color:#333; line-height:1.1;">
+      ...
+    </p>
+    <p style="margin:0 0 15px 0; font-size:14px; color:#444;">
+      ... (?/10)
+    </p>
+  </div>
+
+
+  
   <div style="flex:1 1 300px; border:1px solid #eee; border-radius:8px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:all 0.2s ease; background:#fff;">
     <h3 style="margin:0 0 10px 0; font-size:20px; color:#222;">The Alchemist</h3>
     <p style="margin:0 0 15px 0; font-size:14px; color:#666;">
