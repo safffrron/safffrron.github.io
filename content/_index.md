@@ -15,7 +15,7 @@ draft: false
 </p>
 
 Hey there, I am Kislay currently a first year MS student at Indian Institute of Technology, Bombay in the Department of Computer Science and Engineering. My research include working with large language models and their applications in various domains.
-My PI is Professor Pushpak Bhattacharyya, who currently heads the CFILT (Computation for Indian Language Technology) lab at IIT Bombay. I am also a member of this lab where I am currently working on the Flipkart-IIT Bombay collaboration project on developing a large language model focused on E-commerce applications.
+My PI is Professor Pushpak Bhattacharyya, who currently heads the CFILT (Computation for Indian Language Technology) lab at IIT Bombay. I am also a member of this lab where my research focuses on large language models, especially their applications in particular domains.
 
 I completed my B.Tech from Indian Institute of Technology, Kanpur in the year 2025. I got interested in the field of Natural Language Processing during my undergraduate studies, where I worked on various projects related to Reinforcement Learning and Large Language Models. My hobbies include playing competitve chess and sometimes doodling.
 
