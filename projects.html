@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Academic</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+      <ul>
+        <li>
+          <a class="nav-link page-link" data-page="main">about</a>
+        </li>
+        <li>
+          <a class="nav-link scroll-link" data-section="research">research</a>
+          <ul class="sub-nav" id="research-subnav">
+            <li><a class="scroll-link" data-section="game-theory">game theory</a></li>
+            <li><a class="scroll-link" data-section="multi-agent">multi-agent learning</a></li>
+            <li><a class="scroll-link" data-section="ai-safety">AI safety</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-link scroll-link" data-section="publications">publications</a>
+          <ul class="sub-nav" id="publications-subnav">
+            <li><a class="scroll-link" data-section="year-2024">2024</a></li>
+            <li><a class="scroll-link" data-section="year-2023">2023</a></li>
+            <li><a class="scroll-link" data-section="year-2022">2022</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-link scroll-link" data-section="contact">contact</a>
+        </li>
+        <li class="nav-separator">
+          <a class="nav-link page-link" data-page="notes">notes</a>
+        </li>
+        <li>
+          <a class="nav-link page-link" data-page="projects">projects</a>
+        </li>
+      </ul>
+      
+      <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle">dark mode</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Projects Page -->
+      <div id="projects-page" class="page active">
+        <header>
+          <h1>Projects</h1>
+          <p class="subtitle">Software · Datasets · Tools</p>
+        </header>
+
+        <ul class="project-list">
+          <li>
+            <div class="project-title">Multi-Agent Coordination Framework</div>
+            <div class="project-meta">Python · PyTorch · 2024</div>
+            <div class="project-desc">
+              An open-source framework for simulating and analyzing multi-agent systems with various coordination 
+              mechanisms. Implements state-of-the-art algorithms for equilibrium computation and mechanism design.
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Demo</a>
+              <a href="#">Docs</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-title">Game Theory Visualization Tool</div>
+            <div class="project-meta">JavaScript · D3.js · 2023</div>
+            <div class="project-desc">
+              Interactive web tool for visualizing game-theoretic concepts and equilibria. 
+              Helps students understand strategic interactions through dynamic, visual representations.
+            </div>
+            <div class="project-links">
+              <a href="#">Live Demo</a>
+              <a href="#">GitHub</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-title">Reinforcement Learning for Security Games</div>
+            <div class="project-meta">Python · TensorFlow · 2023</div>
+            <div class="project-desc">
+              Implementation of RL algorithms for computing optimal defense strategies in security games. 
+              Benchmarked against traditional optimization approaches on real-world datasets.
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Paper</a>
+            </div>
+          </li>
+        </ul>
+
+        <footer>
+          <p>© 2025 Your Name</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
