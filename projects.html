@@ -1,105 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Academic</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="wrapper">
-    <nav id="sidebar">
-      <ul>
-        <li>
-          <a class="nav-link page-link" data-page="main">about</a>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="research">research</a>
-          <ul class="sub-nav" id="research-subnav">
-            <li><a class="scroll-link" data-section="game-theory">game theory</a></li>
-            <li><a class="scroll-link" data-section="multi-agent">multi-agent learning</a></li>
-            <li><a class="scroll-link" data-section="ai-safety">AI safety</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="publications">publications</a>
-          <ul class="sub-nav" id="publications-subnav">
-            <li><a class="scroll-link" data-section="year-2024">2024</a></li>
-            <li><a class="scroll-link" data-section="year-2023">2023</a></li>
-            <li><a class="scroll-link" data-section="year-2022">2022</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="contact">contact</a>
-        </li>
-        <li class="nav-separator">
-          <a class="nav-link page-link" data-page="notes">notes</a>
-        </li>
-        <li>
-          <a class="nav-link page-link" data-page="projects">projects</a>
-        </li>
-      </ul>
-      
-      <div class="theme-toggle-container">
-        <button id="theme-toggle" class="theme-toggle">dark mode</button>
-      </div>
-    </nav>
-
-    <main>
-      <!-- Projects Page -->
-      <div id="projects-page" class="page active">
-        <header>
-          <h1>Projects</h1>
-          <p class="subtitle">Software · Datasets · Tools</p>
-        </header>
-
-        <ul class="project-list">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Academic</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar">
+        <ul>
           <li>
-            <div class="project-title">Multi-Agent Coordination Framework</div>
-            <div class="project-meta">Python · PyTorch · 2024</div>
-            <div class="project-desc">
-              An open-source framework for simulating and analyzing multi-agent systems with various coordination 
-              mechanisms. Implements state-of-the-art algorithms for equilibrium computation and mechanism design.
-            </div>
-            <div class="project-links">
-              <a href="#">GitHub</a>
-              <a href="#">Demo</a>
-              <a href="#">Docs</a>
-            </div>
+            <a class="nav-link page-link" data-page="main">about</a>
           </li>
           <li>
-            <div class="project-title">Game Theory Visualization Tool</div>
-            <div class="project-meta">JavaScript · D3.js · 2023</div>
-            <div class="project-desc">
-              Interactive web tool for visualizing game-theoretic concepts and equilibria. 
-              Helps students understand strategic interactions through dynamic, visual representations.
-            </div>
-            <div class="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
-            </div>
+            <a class="nav-link scroll-link" data-section="research">research</a>
+            <ul class="sub-nav" id="research-subnav">
+              <li>
+                <a class="scroll-link" data-section="game-theory"
+                  >game theory</a
+                >
+              </li>
+              <li>
+                <a class="scroll-link" data-section="multi-agent"
+                  >multi-agent learning</a
+                >
+              </li>
+              <li>
+                <a class="scroll-link" data-section="ai-safety">AI safety</a>
+              </li>
+            </ul>
           </li>
           <li>
-            <div class="project-title">Reinforcement Learning for Security Games</div>
-            <div class="project-meta">Python · TensorFlow · 2023</div>
-            <div class="project-desc">
-              Implementation of RL algorithms for computing optimal defense strategies in security games. 
-              Benchmarked against traditional optimization approaches on real-world datasets.
-            </div>
-            <div class="project-links">
-              <a href="#">GitHub</a>
-              <a href="#">Paper</a>
-            </div>
+            <a class="nav-link scroll-link" data-section="publications"
+              >publications</a
+            >
+            <ul class="sub-nav" id="publications-subnav">
+              <li><a class="scroll-link" data-section="year-2024">2024</a></li>
+              <li><a class="scroll-link" data-section="year-2023">2023</a></li>
+              <li><a class="scroll-link" data-section="year-2022">2022</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="contact">contact</a>
+          </li>
+          <li class="nav-separator">
+            <a class="nav-link page-link" data-page="notes">notes</a>
+          </li>
+          <li>
+            <a class="nav-link page-link" data-page="projects">projects</a>
           </li>
         </ul>
 
-        <footer>
-          <p>© 2025 Your Name</p>
-        </footer>
-      </div>
-    </main>
-  </div>
+        <div class="theme-toggle-container">
+          <button id="theme-toggle" class="theme-toggle">dark mode</button>
+        </div>
+      </nav>
 
-  <script src="script.js"></script>
-</body>
+      <main>
+        <!-- Projects Page -->
+        <div id="projects-page" class="page active">
+          <header>
+            <h1>Projects</h1>
+            <p class="subtitle">Software · Datasets · Tools</p>
+          </header>
+
+          <ul class="project-list">
+            <li>
+              <div class="project-title">
+                Analysis of EBMs — Boltzmann Machines
+              </div>
+              <div class="project-meta">
+                Energy-Based Models · Python · 2025
+              </div>
+              <div class="project-desc">
+                Experimental study of energy-based models (Boltzmann machines)
+                investigating the effect of Contrastive Divergence (CD) steps on
+                sample quality. Includes analysis scripts, configurations, and
+                result outputs for varying CD schedules and sampling strategies.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/boltzmann-machine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">
+                Know.Study.Help 
+              </div>
+              <div class="project-meta">Python · Flask · Web · 2025</div>
+              <div class="project-desc">
+                A lightweight web platform for academic management and study
+                workflows. The repo contains a Flask backend (app.py /
+                server.py), HTML templates and static assets, and utilities to
+                manage study-related content and pages. Built as a small
+                full-stack project for course/organisational use.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/Know.Study.Help/tree/backup_branch/Project_SL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">
+                Transliteration (Roman → Devanagari)
+              </div>
+              <div class="project-meta">
+                Transliteration · LSTM / Transformer · Python · 2025
+              </div>
+              <div class="project-desc">
+                Code and experiments for Hindi transliteration (Roman to
+                Devanagari). The repo includes LSTM and transformer checkpoints,
+                sampling and evaluation scripts, and a short paper/report
+                describing the approach. A demo script is provided for quick
+                sampling; some LLM-based inference paths require an NVIDIA API
+                key (noted in the README).
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/transliteration"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">Prompt Tuning </div>
+              <div class="project-meta">
+                Prompt tuning · Experimental · Python · 2025
+              </div>
+              <div class="project-desc">
+                Research-and-development code exploring prompt / prefix tuning
+                approaches for LLMs. Contains experimental code, notebooks and
+                utilities used to run prompt tuning experiments and compare
+                prompt-based interventions across models.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/prompt_tuning"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="project-title">
+                LLM-Based Scraper for Amazon Order Information
+              </div>
+              <div class="project-meta">Python · Selenium · LLMs · 2024</div>
+              <div class="project-desc">
+                Built an automation pipeline to extract structured order history
+                data from Amazon using Selenium. Integrated an open-source LLM
+                (GPT-Neo) to process and structure raw HTML into JSON/CSV
+                formats, with support for swapping in stronger models. Focused
+                on robustness, security, and scalability.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/LLM-Scraper"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">
+                Curiosity-Driven Exploration via Self-Supervised Prediction
+              </div>
+              <div class="project-meta">
+                Reinforcement Learning · PyTorch · 2024
+              </div>
+              <div class="project-desc">
+                Implemented the Intrinsic Curiosity Module (ICM) across DQN,
+                A3C, and PPO to study exploration in sparse-reward environments.
+                Demonstrated how intrinsic rewards improve learning efficiency
+                and policy performance across different RL algorithms.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/ICML_Curiosity_Exploration"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">
+                Exploration and Analysis of Deep Reinforcement Learning Methods
+              </div>
+              <div class="project-meta">Deep RL · PyTorch · 2024</div>
+              <div class="project-desc">
+                A comprehensive study and implementation of classical and deep
+                RL algorithms including bandits, Monte Carlo, TD methods, SARSA,
+                Q-learning, DQN variants, PPO, TD3, and DDPG. Includes
+                experiments, comparisons, and visual analysis.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/Analysis-of-Deep-Reinforcement-Learning"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">Computer Vision using C</div>
+              <div class="project-meta">
+                C · Python · Computer Vision · 2023
+              </div>
+              <div class="project-desc">
+                Implemented core image processing and computer vision algorithms
+                in C with Python bindings. Covered filtering, convolutions, edge
+                detection, hybrid images, and color space transformations, with
+                visual validation through experiments.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/Computer-Vision-using-C"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <div class="project-title">
+                Tour De OAAR – Astronomy Club, IIT Kanpur
+              </div>
+              <div class="project-meta">
+                Mentorship · Python · Web APIs · 2023
+              </div>
+              <div class="project-desc">
+                Mentored a team of students on Python programming and automation
+                projects for the campus observatory. Guided development of tools
+                such as weather monitoring systems using APIs and JSON,
+                alongside teaching astronomy fundamentals and telescope
+                operations.
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/safffrron/TourDeOAAR"
+                  target="_blank"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+          </ul>
+
+          <footer>
+            <p>© 2025 Your Name</p>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
