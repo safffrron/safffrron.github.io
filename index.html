@@ -1,106 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name | Academic</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="wrapper">
-    <nav id="sidebar">
-      <ul>
-        <li>
-          <a class="nav-link page-link" data-page="main">about</a>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="research">research</a>
-          <ul class="sub-nav" id="research-subnav">
-            <li><a class="scroll-link" data-section="game-theory">game theory</a></li>
-            <li><a class="scroll-link" data-section="multi-agent">multi-agent learning</a></li>
-            <li><a class="scroll-link" data-section="ai-safety">AI safety</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="publications">publications</a>
-          <ul class="sub-nav" id="publications-subnav">
-            <li><a class="scroll-link" data-section="year-2024">2024</a></li>
-            <li><a class="scroll-link" data-section="year-2023">2023</a></li>
-            <li><a class="scroll-link" data-section="year-2022">2022</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="contact">contact</a>
-        </li>
-        <li class="nav-separator">
-          <a class="nav-link page-link" data-page="notes">notes</a>
-        </li>
-        <li>
-          <a class="nav-link page-link" data-page="projects">projects</a>
-        </li>
-      </ul>
-      
-      <div class="theme-toggle-container">
-        <button id="theme-toggle" class="theme-toggle">dark mode</button>
-      </div>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kislay</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar">
+        <ul>
+          <li>
+            <a class="nav-link page-link" data-page="main">about</a>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="research">research</a>
+            <ul class="sub-nav" id="research-subnav">
+              <li>
+                <a class="scroll-link" data-section="theoretical-rl"
+                  >Theoretical RL</a
+                >
+              </li>
+              <li>
+                <a
+                  class="scroll-link"
+                  data-section="mechanistic-interperetability"
+                  >Mechanistic Interpretability</a
+                >
+              </li>
+              <li>
+                <a class="scroll-link" data-section="rl-on-llms">RL on LLMs</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="publications"
+              >publications</a
+            >
+            <ul class="sub-nav" id="publications-subnav">
+              <li><a class="scroll-link" data-section="year-2028">2028</a></li>
+              <li><a class="scroll-link" data-section="year-2027">2027</a></li>
+              <li><a class="scroll-link" data-section="year-2026">2026</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="contact">contact</a>
+          </li>
+          <li class="nav-separator">
+            <a class="nav-link page-link" data-page="notes">notes</a>
+          </li>
+          <li>
+            <a class="nav-link page-link" data-page="projects">projects</a>
+          </li>
+        </ul>
 
-    <main>
-      <!-- Main Page -->
-      <div id="main-page" class="page active">
-        <header>
-          <h1>Kislay Aditya Oj</h1>
-          <p class="subtitle">MS-CSE · IIT Bombay</p>
-        </header>
+        <div class="theme-toggle-container">
+          <button id="theme-toggle" class="theme-toggle">dark mode</button>
+        </div>
+      </nav>
 
-        <section id="about">
-          <h2>About</h2>
-          <div class="about-content">
-            <div class="photo" style="background-image: url('https://via.placeholder.com/120');"></div>
-            <p>
-              I'm a graduate researcher interested in theoretical reinforcement learning, RL on large language models, multi-agent systems and applied nlp. 
-              My work currently focuses on bandit algorithms and agentic AI.
+      <main>
+        <!-- Main Page -->
+        <div id="main-page" class="page active">
+          <header>
+            <h1>Kislay Aditya Oj</h1>
+            <p class="subtitle">
+              Computer Science and Engineering &nbsp;|&nbsp; MS · IIT Bombay
+              &nbsp;|&nbsp; BTech · IIT Kanpur
             </p>
-            <p>
-              I'm presently a student researcher in the CFILT lab at IIT Bombay, where I work on above mentioned areas. 
-              I completed my B.Tech. at IIT Kanpur in 2025.
-            </p>
-          </div>
-        </section>
+            <!-- <p class="subtitle">BTech · IIT Kanpur</p> -->
+          </header>
 
-        <section id="research">
-          <h2>Research</h2>
-          
-          <div class="topic" id="game-theory">
-            <h3>Theoretical Reinforcement Learning</h3>
-            <p>
-              I study computational problems in game-theoretic settings, focusing on equilibrium computation 
-              and mechanism design. My work bridges theoretical computer science and economics to develop 
-              efficient algorithms for strategic interactions.
-            </p>
-          </div>
+          <section id="about">
+            <h2>About</h2>
+            <div class="about-content">
+              <div class="photo" style="background-image: url('dp.jpg')"></div>
+              <p>
+                I’m Kislay, currently pursuing an MS by Research in Computer
+                Science & Engineering at IIT Bombay, where I’m part of the CFILT
+                Lab. I completed my B.Tech from IIT Kanpur in 2025. I have a
+                strong interest in reinforcement learning, machine learning and
+                language technologies, and enjoy working on problems that
+                involve learning theory, decision making and statistics.
+              </p>
 
-          <div class="topic" id="multi-agent">
-            <h3>Multi Agent Learning</h3>
-            <p>
-              I investigate how autonomous agents can learn to coordinate and cooperate in dynamic environments. 
-              This includes reinforcement learning, online learning, and adaptive mechanisms for multi-agent systems.
-            </p>
-          </div>
+              <p>
+                Outside of academics, I really enjoy chess, I follow games
+                closely and play competitively (currently around 1900, though I
+                have touched 2000 before… we don't talk about the rating drop).
+                I also follow Formula 1, sketch in my free time, and enjoy
+                reading books. Lately, I've been learning to play the piano as
+                well. You can find me on
+                <a
+                  href="https://x.com/blindlamp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >X</a
+                >, check out my occasional blogs in the
+                <a href="notes.html">notes</a> section, or browse through my
+                <a href="projects.html">projects</a>
+                to see what I've been working on.
+              </p>
+            </div>
+          </section>
 
-          <div class="topic" id="ai-safety">
-            <h3>Applied NLP</h3>
-            <p>
-              I work on ensuring AI systems behave in accordance with human values and intentions, 
-              particularly in multi-agent scenarios where strategic behavior can lead to misalignment.
-            </p>
-          </div>
-        </section>
+          <section id="research">
+            <h2>Research</h2>
 
-        <section id="publications">
-          <h2>Publications</h2>
-          
-          <h3 id="year-2024">2024</h3>
+            <div class="topic" id="theoretical-rl">
+              <h3>Theoretical Reinforcement Learning</h3>
+              <p>
+                I work on theoretical reinforcement learning with a focus on
+                bandit problems involving hidden structure, such as latent user
+                states or clustered populations. My research studies how offline
+                models and shared structure can be combined with online
+                exploration to design sample efficient algorithms with provable
+                regret guarantees.
+              </p>
+            </div>
+
+            <div class="topic" id="mechanistic-interperetability">
+              <h3>Mechanistic Interpretability</h3>
+              <p>
+                I investigate how neural networks, especially LLMs, implement
+                internal computation mechanisms rather than just observing input
+                output behavior. This includes studying the geometry of
+                representations, circuit structure inside transformers, and
+                causal mechanisms behind tasks like reasoning and figurative
+                language.
+              </p>
+            </div>
+
+            <div class="topic" id="rl-on-llms">
+              <h3>Reinforcement Learning for Adaptive LLM Agents</h3>
+              <p>
+                I study how reinforcement learning ideas can be used to help
+                large language model (LLM) agents improve from feedback during
+                real use. This work focuses on test time adaptation using
+                reflection, memory, and personalization rather than model fine
+                tuning. As part of the Flipkart–IIT Bombay collaboration, my
+                goal is to build LLM agents that become more reliable and user
+                aware over time.
+              </p>
+            </div>
+          </section>
+
+          <section id="publications">
+            <h2>Publications</h2>
+            working on it
+            <!-- <h3 id="year-2024">2024</h3>
           <ul class="paper-list">
             <li>
               <div class="paper-title">Paper Title: An Important Result in Your Field</div>
@@ -153,50 +201,56 @@
                 scalable algorithm that can handle large-scale scenarios with hundreds of agents.
               </div>
             </li>
-          </ul>
-        </section>
+          </ul> -->
+          </section>
 
-        <section id="contact">
-          <h2>Contact</h2>
-          <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:your.email@university.edu">your.email@university.edu</a></p>
-            <p>
-              <strong>Office:</strong> Building Name, Room 123<br>
-              Department of Computer Science<br>
-              University Name
-            </p>
-            <p>
-              <a href="#">Google Scholar</a> · 
-              <a href="#">GitHub</a> · 
-              <a href="#">Twitter</a>
-            </p>
-          </div>
-        </section>
+          <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:kislay@cse.iitb.ac.in">kislay@cse.iitb.ac.in</a>
+              </p>
+              <p>
+                <strong>Lab:</strong> CFILT Lab, Room 401, Computer Centre<br />
+                Department of Computer Science<br />
+                Indian Institute of Technology, Bombay
+              </p>
+              <p>
+                <a href="#">Google Scholar</a> ·
+                <a href="https://github.com/safffrron" target="_blank"
+                  >GitHub</a
+                >
+                ·
+                <a href="https://x.com/blindlamp" target="_blank">Twitter</a>
+              </p>
+            </div>
+          </section>
 
-        <footer>
-          <p>© 2025 Your Name</p>
-        </footer>
-      </div>
-    </main>
-  </div>
+          <footer>
+            <p>© 2025 Your Name</p>
+          </footer>
+        </div>
+      </main>
+    </div>
 
-  <script src="script.js"></script>
-  <script>
-    // Handle hash navigation on page load
-    window.addEventListener('load', function() {
-      const hash = window.location.hash.slice(1);
-      if (hash) {
-        const target = document.getElementById(hash);
-        if (target) {
-          setTimeout(() => {
-            window.scrollTo({
-              top: target.offsetTop - 20,
-              behavior: 'smooth'
-            });
-          }, 100);
+    <script src="script.js"></script>
+    <script>
+      // Handle hash navigation on page load
+      window.addEventListener("load", function () {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+          const target = document.getElementById(hash);
+          if (target) {
+            setTimeout(() => {
+              window.scrollTo({
+                top: target.offsetTop - 20,
+                behavior: "smooth",
+              });
+            }, 100);
+          }
         }
-      }
-    });
-  </script>
-</body>
+      });
+    </script>
+  </body>
 </html>
