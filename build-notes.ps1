@@ -24,10 +24,32 @@ foreach ($file in $backendFiles) {
             $notesListHTML += $match.Value + "`n"
         }
         
-        # Extract full note divs
-        $fullNotes = [regex]::Matches($content, '<div id="note\d+-full"[\s\S]*?</div>\s*</div>')
-        foreach ($match in $fullNotes) {
-            $notesFullHTML += $match.Value + "`n"
+        # Extract full note divs - match from opening <div id="note#-full" to closing </div></div>
+        # Need to count nested divs properly
+        $lines = $content -split "`n"
+        $inNoteDiv = $false
+        $noteDiv = ""
+        $divCount = 0
+        
+        foreach ($line in $lines) {
+            if ($line -match '<div id="note\d+-full"') {
+                $inNoteDiv = $true
+                $noteDiv = $line
+                $divCount = 1
+            } elseif ($inNoteDiv) {
+                $noteDiv += "`n" + $line
+                
+                # Count opening divs
+                $divCount += ($line | Select-String -Pattern '<div' -AllMatches).Matches.Count
+                # Count closing divs
+                $divCount -= ($line | Select-String -Pattern '</div>' -AllMatches).Matches.Count
+                
+                # When all divs are closed, we have the complete note
+                if ($divCount -eq 0) {
+                    $notesFullHTML += $noteDiv + "`n"
+                    $inNoteDiv = $false
+                }
+            }
         }
     }
 }
