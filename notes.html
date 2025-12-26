@@ -1,227 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notes | Academic</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="wrapper">
-    <nav id="sidebar">
-      <ul>
-        <li>
-          <a class="nav-link page-link" data-page="main">about</a>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="research">research</a>
-          <ul class="sub-nav" id="research-subnav">
-            <li><a class="scroll-link" data-section="game-theory">game theory</a></li>
-            <li><a class="scroll-link" data-section="multi-agent">multi-agent learning</a></li>
-            <li><a class="scroll-link" data-section="ai-safety">AI safety</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="publications">publications</a>
-          <ul class="sub-nav" id="publications-subnav">
-            <li><a class="scroll-link" data-section="year-2024">2024</a></li>
-            <li><a class="scroll-link" data-section="year-2023">2023</a></li>
-            <li><a class="scroll-link" data-section="year-2022">2022</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="nav-link scroll-link" data-section="contact">contact</a>
-        </li>
-        <li class="nav-separator">
-          <a class="nav-link page-link" data-page="notes">notes</a>
-        </li>
-        <li>
-          <a class="nav-link page-link" data-page="projects">projects</a>
-        </li>
-      </ul>
-      
-      <div class="theme-toggle-container">
-        <button id="theme-toggle" class="theme-toggle">dark mode</button>
-      </div>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kislay | Notes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar">
+        <ul>
+          <li>
+            <a class="nav-link page-link" data-page="main">about</a>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="research">research</a>
+            <ul class="sub-nav" id="research-subnav">
+              <li>
+                <a class="scroll-link" data-section="theoretical-rl"
+                  >Theoretical RL</a
+                >
+              </li>
+              <li>
+                <a
+                  class="scroll-link"
+                  data-section="mechanistic-interperetability"
+                  >Mechanistic Interpretability</a
+                >
+              </li>
+              <li>
+                <a class="scroll-link" data-section="rl-on-llms">RL on LLMs</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="publications"
+              >publications</a
+            >
+            <ul class="sub-nav" id="publications-subnav">
+              <li><a class="scroll-link" data-section="year-2028">2028</a></li>
+              <li><a class="scroll-link" data-section="year-2027">2027</a></li>
+              <li><a class="scroll-link" data-section="year-2026">2026</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link scroll-link" data-section="contact">contact</a>
+          </li>
+          <li class="nav-separator">
+            <a class="nav-link page-link" data-page="notes">notes</a>
+          </li>
+          <li>
+            <a class="nav-link page-link" data-page="projects">projects</a>
+          </li>
+        </ul>
 
-    <main>
-      <!-- Notes Page -->
-      <div id="notes-page" class="page active">
-        <header>
-          <h1>Notes</h1>
-          <p class="subtitle">Scattered thoughts and reflections</p>
-        </header>
-
-        <div id="notes-list">
-          <ul class="note-list">
-            <li>
-              <div class="note-title" onclick="showNote('note1')">On the Difficulty of Learning with Strategic Agents</div>
-              <div class="note-date">January 2025</div>
-              <div class="note-excerpt">
-                Some scattered thoughts on why standard ML assumptions break down when agents are strategic. 
-                The i.i.d. assumption is particularly problematic—agents adapt their behavior based on 
-                the learned model, creating a feedback loop that's rarely discussed in textbooks...
-              </div>
-            </li>
-            <li>
-              <div class="note-title" onclick="showNote('note2')">Reading Notes: Mechanism Design Without Money</div>
-              <div class="note-date">December 2024</div>
-              <div class="note-excerpt">
-                Going through some classic papers on mechanism design without payments. The impossibility 
-                results are fascinating but also frustrating. Makes you wonder what's actually achievable 
-                in practice when monetary transfers aren't an option...
-              </div>
-            </li>
-            <li>
-              <div class="note-title" onclick="showNote('note3')">Why Coordination is Hard (and Why We Should Care)</div>
-              <div class="note-date">November 2024</div>
-              <div class="note-excerpt">
-                Random musings on coordination failures in multi-agent systems. Even when agents have 
-                aligned incentives, coordination can fail spectacularly. The gap between theory and 
-                practice in this area is both challenging and exciting...
-              </div>
-            </li>
-            <li>
-              <div class="note-title" onclick="showNote('note4')">Conference Reflections</div>
-              <div class="note-date">October 2024</div>
-              <div class="note-excerpt">
-                Just back from a conference. Some interesting trends: more work on learning with 
-                strategic agents, lots of LLM + game theory combinations (some more convincing than others), 
-                and a growing interest in fairness considerations...
-              </div>
-            </li>
-          </ul>
+        <div class="theme-toggle-container">
+          <button id="theme-toggle" class="theme-toggle">dark mode</button>
         </div>
+      </nav>
 
-        <!-- Individual Note Views (hidden by default) -->
-        <div id="note1-full" class="note-full" style="display: none;">
-          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
-          <div class="note-title">On the Difficulty of Learning with Strategic Agents</div>
-          <div class="note-date">January 2025</div>
-          <div class="note-content">
-            <p>
-              Some scattered thoughts on why standard ML assumptions break down when agents are strategic. 
-              The i.i.d. assumption is particularly problematic—agents adapt their behavior based on 
-              the learned model, creating a feedback loop that's rarely discussed in textbooks.
+      <main>
+        <!-- Notes Page -->
+        <div id="notes-page" class="page active">
+          <header>
+            <h1>Notes</h1>
+            <p class="subtitle">
+              Scattered thoughts and reflections. Click to expand.
             </p>
-            <p>
-              This becomes especially tricky in multi-agent settings. You're not just dealing with one 
-              adaptive agent, but multiple agents who are simultaneously learning and adapting to each 
-              other's strategies. The dynamics can get surprisingly complex, even in simple games.
-            </p>
-            <p>
-              I've been thinking about whether we need fundamentally different learning frameworks for 
-              these settings, or if we can patch existing approaches with some game-theoretic insights. 
-              Probably somewhere in between, but the right balance is unclear.
-            </p>
-            <p>
-              Some recent papers have started addressing this, but there's still a lot of work to be done. 
-              The practical implications for deployed AI systems are significant—we can't just assume 
-              our training distribution will remain stable.
-            </p>
+          </header>
+
+          <div id="notes-list">
+            <ul class="note-list">
+              <li>
+                <div class="note-title" onclick="showNote('note4')">
+                  Attending my first Conference
+                </div>
+                <div class="note-date">December 2025</div>
+                <div class="note-excerpt">
+                  Some scattered thoughts on why standard ML assumptions break
+                  down when agents are strategic. The i.i.d. assumption is
+                  particularly problematic—agents adapt their behavior based on
+                  the learned model, creating a feedback loop that's rarely
+                  discussed in textbooks...
+                </div>
+              </li>
+              <li>
+                <div class="note-title" onclick="showNote('note3')">
+                  Book this week #1 - The Alchemist
+                </div>
+                <div class="note-date">Paul Cohelo · December 2025</div>
+                <div class="note-excerpt">
+                  A short and simple story about chasing dreams and learning
+                  from the journey. Predictable at times, but still a solid and
+                  meaningful read, especially for beginners.
+                </div>
+              </li>
+              <li>
+                <div class="note-title" onclick="showNote('note2')">
+                  Tier List #2 - Movies
+                </div>
+                <div class="note-date">September 2025</div>
+                <div class="note-excerpt">
+                  Random musings on coordination failures in multi-agent
+                  systems. Even when agents have aligned incentives,
+                  coordination can fail spectacularly. The gap between theory
+                  and practice in this area is both challenging and exciting...
+                </div>
+              </li>
+              <li>
+                <div class="note-title" onclick="showNote('note1')">
+                  Tier List #1 - Anime
+                </div>
+                <div class="note-date">September 2025</div>
+                <div class="note-excerpt">
+                  Just back from a conference. Some interesting trends: more
+                  work on learning with strategic agents, lots of LLM + game
+                  theory combinations (some more convincing than others), and a
+                  growing interest in fairness considerations...
+                </div>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        <div id="note2-full" class="note-full" style="display: none;">
-          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
-          <div class="note-title">Reading Notes: Mechanism Design Without Money</div>
-          <div class="note-date">December 2024</div>
-          <div class="note-content">
-            <p>
-              Going through some classic papers on mechanism design without payments. The impossibility 
-              results are fascinating but also frustrating. Makes you wonder what's actually achievable 
-              in practice when monetary transfers aren't an option.
-            </p>
-            <p>
-              The Gibbard-Satterthwaite theorem is the obvious starting point—any reasonable voting 
-              mechanism is either dictatorial or manipulable. But there are interesting loopholes when 
-              you weaken the assumptions or consider specific domains.
-            </p>
-            <p>
-              What strikes me is how often these theoretical impossibilities don't materialize in practice. 
-              Real agents aren't perfectly rational, computation is costly, and information is incomplete. 
-              These "imperfections" might actually be features, not bugs.
-            </p>
-            <p>
-              Need to think more about the gap between worst-case analysis (which gives us impossibilities) 
-              and average-case or learning-theoretic approaches (which might be more optimistic).
-            </p>
+          <!-- Individual Note Views (hidden by default) -->
+          <div id="note4-full" class="note-full" style="display: none">
+            <a class="back-link" onclick="showNotesList()"
+              >← Back to all notes</a
+            >
+            <div class="note-title">
+              On the Difficulty of Learning with Strategic Agents
+            </div>
+            <div class="note-date">January 2025</div>
+            <div class="note-content">
+              <p>
+                Some scattered thoughts on why standard ML assumptions break
+                down when agents are strategic. The i.i.d. assumption is
+                particularly problematic—agents adapt their behavior based on
+                the learned model, creating a feedback loop that's rarely
+                discussed in textbooks.
+              </p>
+              <p>
+                This becomes especially tricky in multi-agent settings. You're
+                not just dealing with one adaptive agent, but multiple agents
+                who are simultaneously learning and adapting to each other's
+                strategies. The dynamics can get surprisingly complex, even in
+                simple games.
+              </p>
+              <p>
+                I've been thinking about whether we need fundamentally different
+                learning frameworks for these settings, or if we can patch
+                existing approaches with some game-theoretic insights. Probably
+                somewhere in between, but the right balance is unclear.
+              </p>
+              <p>
+                Some recent papers have started addressing this, but there's
+                still a lot of work to be done. The practical implications for
+                deployed AI systems are significant—we can't just assume our
+                training distribution will remain stable.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div id="note3-full" class="note-full" style="display: none;">
-          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
-          <div class="note-title">Why Coordination is Hard (and Why We Should Care)</div>
-          <div class="note-date">November 2024</div>
-          <div class="note-content">
-            <p>
-              Random musings on coordination failures in multi-agent systems. Even when agents have 
-              aligned incentives, coordination can fail spectacularly. The gap between theory and 
-              practice in this area is both challenging and exciting.
-            </p>
-            <p>
-              Simple example: traffic. Everyone wants to get home quickly, but we still get jams. 
-              The problem isn't conflicting interests—it's the lack of coordination. Each driver makes 
-              locally optimal decisions that lead to globally suboptimal outcomes.
-            </p>
-            <p>
-              In AI systems, this gets worse because we're adding more autonomous agents into already 
-              complex systems. Self-driving cars, automated trading, smart grid management—all domains 
-              where coordination failures could have serious consequences.
-            </p>
-            <p>
-              The question is: how do we design systems that coordinate well by default? Communication 
-              helps but isn't always feasible. Shared protocols and standards are promising but hard 
-              to agree on. Learning to coordinate is possible but slow.
-            </p>
-            <p>
-              Maybe the answer is multiple layers: good defaults, clear protocols when possible, 
-              and learning mechanisms as fallback. But implementing this in practice is far from trivial.
-            </p>
+          <div id="note3-full" class="note-full" style="display: none">
+            <a class="back-link" onclick="showNotesList()"
+              >← Back to all notes</a
+            >
+            <div class="note-title">
+               Book this week #1 - The Alchemist
+            </div>
+            <div class="note-date">Paul Cohelo · December 2025</div>
+            <div class="note-content">
+              <p>
+                The Alchemist is about a boy who wants to follow his dreams and
+                the different obstacles, experiences, and lessons he encounters
+                along the way. The story is straightforward and easy to follow,
+                and most of its ideas are conveyed through simple events rather
+                than complex plot twists.
+              </p>
+              <p>
+                I think this book works especially well as a starter read. It
+                doesn’t demand much from the reader in terms of attention or
+                background, and the lessons are communicated clearly. In many
+                places, the book feels less like a story meant to surprise you
+                and more like a lesson you’re supposed to reflect on while
+                reading. Because of this, it helps to keep an open mind rather
+                than treating it as something to rush through.
+              </p>
+              <p>
+                From a broader view, the story is fairly predictable,
+                particularly if you are familiar with similar themes in anime or
+                other coming-of-age narratives. This can make parts of the book
+                feel slow or unexciting. Still, considering how old the book is,
+                that predictability is not too surprising and doesn’t completely
+                take away from the experience.
+              </p>
+              <p>
+                One thing I liked is that the book is short and well-paced. You
+                can finish it in one sitting without feeling tired or
+                overwhelmed. Even if the ideas are not entirely new, the book
+                presents them in a calm and readable way. Overall, I would
+                recommend The Alchemist. It’s not a deep or complex book, but
+                it’s an easy and thoughtful read that can be enjoyable,
+                especially if you’re just getting into reading.
+              </p>
+              Rating: ★★★★★★☆☆☆☆ (6/10)
+            </div>
           </div>
-        </div>
 
-        <div id="note4-full" class="note-full" style="display: none;">
-          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
-          <div class="note-title">Conference Reflections</div>
-          <div class="note-date">October 2024</div>
-          <div class="note-content">
-            <p>
-              Just back from a conference. Some interesting trends: more work on learning with 
-              strategic agents, lots of LLM + game theory combinations (some more convincing than others), 
-              and a growing interest in fairness considerations.
-            </p>
-            <p>
-              The LLM stuff is fascinating but also concerning. People are treating language models as 
-              strategic agents without always thinking carefully about what that means. Are we modeling 
-              the humans using the LLMs, or the LLMs themselves? The distinction matters.
-            </p>
-            <p>
-              On the positive side, there's much more awareness of fairness and alignment issues in 
-              multi-agent settings. Not just "does this algorithm work?" but "who benefits and who 
-              gets hurt?" These questions are harder but more important.
-            </p>
-            <p>
-              Also had some great hallway conversations about the replication crisis in ML. Many results 
-              don't hold up when you change the experimental setup slightly. This is worrying but also 
-              an opportunity to develop more robust methods.
-            </p>
-            <p>
-              Overall feeling: the field is maturing, asking harder questions, but also becoming more 
-              fragmented. Need to maintain bridges between theory and practice, between different 
-              application domains. Easier said than done.
-            </p>
+          <div id="note2-full" class="note-full" style="display: none">
+            <a class="back-link" onclick="showNotesList()"
+              >← Back to all notes</a
+            >
+            <div class="note-title">
+              Why Coordination is Hard (and Why We Should Care)
+            </div>
+            <div class="note-date">November 2024</div>
+            <div class="note-content">
+              <p>
+                Random musings on coordination failures in multi-agent systems.
+                Even when agents have aligned incentives, coordination can fail
+                spectacularly. The gap between theory and practice in this area
+                is both challenging and exciting.
+              </p>
+              <p>
+                Simple example: traffic. Everyone wants to get home quickly, but
+                we still get jams. The problem isn't conflicting interests—it's
+                the lack of coordination. Each driver makes locally optimal
+                decisions that lead to globally suboptimal outcomes.
+              </p>
+              <p>
+                In AI systems, this gets worse because we're adding more
+                autonomous agents into already complex systems. Self-driving
+                cars, automated trading, smart grid management—all domains where
+                coordination failures could have serious consequences.
+              </p>
+              <p>
+                The question is: how do we design systems that coordinate well
+                by default? Communication helps but isn't always feasible.
+                Shared protocols and standards are promising but hard to agree
+                on. Learning to coordinate is possible but slow.
+              </p>
+              <p>
+                Maybe the answer is multiple layers: good defaults, clear
+                protocols when possible, and learning mechanisms as fallback.
+                But implementing this in practice is far from trivial.
+              </p>
+            </div>
           </div>
+
+          <div id="note1-full" class="note-full" style="display: none">
+            <a class="back-link" onclick="showNotesList()"
+              >← Back to all notes</a
+            >
+            <div class="note-title">Conference Reflections</div>
+            <div class="note-date">October 2024</div>
+            <div class="note-content">
+              <p>
+                Just back from a conference. Some interesting trends: more work
+                on learning with strategic agents, lots of LLM + game theory
+                combinations (some more convincing than others), and a growing
+                interest in fairness considerations.
+              </p>
+              <p>
+                The LLM stuff is fascinating but also concerning. People are
+                treating language models as strategic agents without always
+                thinking carefully about what that means. Are we modeling the
+                humans using the LLMs, or the LLMs themselves? The distinction
+                matters.
+              </p>
+              <p>
+                On the positive side, there's much more awareness of fairness
+                and alignment issues in multi-agent settings. Not just "does
+                this algorithm work?" but "who benefits and who gets hurt?"
+                These questions are harder but more important.
+              </p>
+              <p>
+                Also had some great hallway conversations about the replication
+                crisis in ML. Many results don't hold up when you change the
+                experimental setup slightly. This is worrying but also an
+                opportunity to develop more robust methods.
+              </p>
+              <p>
+                Overall feeling: the field is maturing, asking harder questions,
+                but also becoming more fragmented. Need to maintain bridges
+                between theory and practice, between different application
+                domains. Easier said than done.
+              </p>
+            </div>
+          </div>
+
+          <footer>
+            <p>Last Updated - December, 2025</p>
+          </footer>
         </div>
+      </main>
+    </div>
 
-        <footer>
-          <p>Last Updated - December, 2025</p>
-        </footer>
-      </div>
-    </main>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
