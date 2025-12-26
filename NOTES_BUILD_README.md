@@ -26,9 +26,16 @@
    </div>
    ```
 
-3. **Build notes.html** - Run this before pushing to GitHub:
+3. **Build notes.html** - Run before pushing to GitHub:
+
+   **On Windows (PowerShell):**
    ```powershell
    .\build-notes.ps1
+   ```
+
+   **On Mac/Linux (Terminal):**
+   ```bash
+   ./build-notes.sh
    ```
 
 4. **Commit and push**:
@@ -44,4 +51,4 @@
 - The backend files (`_backend_notes/`) are just for organization - they're not visible on the website
 - `notes.html` is generated automatically by the build script
 - **Do NOT manually edit `notes.html`** - it will be overwritten when you run the build script
-- Always run `build-notes.ps1` before pushing changes to ensure the website is up to date
+- Always run the appropriate build script (`build-notes.ps1` on Windows or `build-notes.sh` on Mac/Linux) before pushing changes to ensure the website is up to date
