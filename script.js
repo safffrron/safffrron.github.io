@@ -26,7 +26,7 @@ themeToggle.addEventListener('click', () => {
 function showPage(pageName) {
   // For notes and projects, redirect to separate files
   if (pageName === 'notes') {
-    window.location.href = 'notes.html';
+    window.location.href = 'notes-hub.html';
     return;
   }
   if (pageName === 'projects') {
