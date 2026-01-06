@@ -1,260 +1,869 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kislay | Home </title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <nav id="sidebar">
-        <ul>
-          <li>
-            <a class="nav-link page-link" data-page="main">about</a>
-          </li>
-          <li>
-            <a class="nav-link scroll-link" data-section="research">research</a>
-            <ul class="sub-nav" id="research-subnav">
-              <li>
-                <a class="scroll-link" data-section="theoretical-rl"
-                  >Theoretical RL</a
-                >
-              </li>
-              <li>
-                <a
-                  class="scroll-link"
-                  data-section="mechanistic-interperetability"
-                  >Mechanistic Interpretability</a
-                >
-              </li>
-              <li>
-                <a class="scroll-link" data-section="rl-on-llms">RL on LLMs</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scroll-link" data-section="publications"
-              >publications</a
-            >
-            <ul class="sub-nav" id="publications-subnav">
-              <li><a class="scroll-link" data-section="year-2028">2028</a></li>
-              <li><a class="scroll-link" data-section="year-2027">2027</a></li>
-              <li><a class="scroll-link" data-section="year-2026">2026</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scroll-link" data-section="contact">contact</a>
-          </li>
-          <li class="nav-separator">
-            <a class="nav-link page-link" data-page="notes">notes</a>
-          </li>
-          <li>
-            <a class="nav-link page-link" data-page="projects">projects</a>
-          </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kislay | Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --text-primary: #2c2c2c;
+      --text-secondary: #737373;
+      --accent: #0066cc;
+      --bg: #fafafa;
+      --bg-secondary: #f4f4f4;
+      --border-color: #e8e8e8;
+      --scrollbar-thumb: #d0d0d0;
+      --scrollbar-hover: #b0b0b0;
+      --nav-width: 160px;
+      --photo-bg: #e0e0e0;
+    }
+
+    [data-theme="dark"] {
+      --text-primary: #e6e6e6;
+      --text-secondary: #a3a3a3;
+      --accent: #66b3ff;
+      --bg: #1a1a1a;
+      --bg-secondary: #262626;
+      --border-color: #333333;
+      --scrollbar-thumb: #404040;
+      --scrollbar-hover: #555555;
+      --photo-bg: #333333;
+    }
+
+    body {
+      font-family: 'Söhne', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+      color: var(--text-primary);
+      background: var(--bg);
+      font-size: 14px;
+      font-weight: 400;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .wrapper {
+      display: flex;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    nav {
+      position: fixed;
+      width: var(--nav-width);
+      height: 100vh;
+      padding: 50px 0 50px 40px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav > ul > li {
+      margin-bottom: 8px;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      display: block;
+      padding: 2px 0;
+      transition: color 0.15s;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav .sub-nav {
+      display: none;
+      margin-top: 5px;
+      margin-left: 10px;
+    }
+
+    nav .sub-nav.show {
+      display: block;
+    }
+
+    nav .sub-nav li {
+      margin-bottom: 4px;
+    }
+
+    nav .sub-nav a {
+      font-size: 12px;
+      color: var(--text-secondary);
+      opacity: 0.8;
+    }
+
+    nav > ul > li.nav-separator {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .theme-toggle-container {
+      margin-top: auto;
+      padding-top: 20px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      padding: 0;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .theme-toggle:hover {
+      opacity: 1;
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    main {
+      margin-left: calc(var(--nav-width) + 100px);
+      padding: 50px 0;
+      max-width: 580px;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    section {
+      margin-bottom: 25px;
+      scroll-margin-top: 20px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .paper-list, .project-list, .note-list {
+      list-style: none;
+    }
+
+    .paper-list li, .project-list li, .note-list li {
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .paper-list li:last-child, .project-list li:last-child, .note-list li:last-child {
+      border-bottom: none;
+    }
+
+    .paper-title {
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .paper-venue {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .paper-authors {
+      color: var(--text-secondary);
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .paper-links {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    .paper-links a {
+      margin-right: 8px;
+      color: var(--accent);
+    }
+
+    .topic {
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .contact-info p {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .abstract {
+      display: none;
+      margin-top: 6px;
+      padding: 10px;
+      background: var(--bg-secondary);
+      border-left: 2px solid var(--accent);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      border-radius: 2px;
+    }
+
+    .abstract.show {
+      display: block;
+    }
+
+    .toggle-abstract {
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 12px;
+      user-select: none;
+    }
+
+    .toggle-abstract:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .photo {
+      width: 120px;
+      height: 120px;
+      float: right;
+      margin: 0 0 15px 20px;
+      border-radius: 3px;
+      background: var(--photo-bg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-content {
+      overflow: auto;
+    }
+
+    .project-title {
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+      font-size: 14px;
+    }
+
+    .project-meta {
+      color: var(--text-secondary);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .project-links {
+      margin-top: 4px;
+      font-size: 12px;
+    }
+
+    .project-links a {
+      margin-right: 8px;
+      color: var(--accent);
+    }
+
+    .note-list li {
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+    }
+
+    .note-title {
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .note-title:hover {
+      color: var(--accent);
+    }
+
+    .note-date {
+      color: var(--text-secondary);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .note-excerpt {
+      font-size: 13px;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .note-full {
+      margin-bottom: 30px;
+    }
+
+    .note-full .note-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      cursor: default;
+      color: var(--text-primary);
+    }
+
+    .note-full .note-date {
+      margin-bottom: 15px;
+    }
+
+    .note-content {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .note-content p {
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    .tier-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .tier-row {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .tier-row:last-child {
+      border-bottom: none;
+    }
+
+    .tier-label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .tier-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .tier-item {
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    body[data-theme="dark"] .tier-row {
+      border-bottom: 1px solid #444;
+    }
+
+    body[data-theme="dark"] .tier-label {
+      color: #bbb;
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--bg-secondary);
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        display: block;
+      }
+
+      nav > ul {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      nav .sub-nav {
+        display: none !important;
+      }
+
+      nav > ul > li.nav-separator {
+        border: none;
+        margin-top: 0;
+        padding-top: 0;
+      }
+      
+      .theme-toggle-container {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--border-color);
+        text-align: left;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 30px 20px;
+        max-width: 100%;
+      }
+
+      .wrapper {
+        flex-direction: column;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <nav id="sidebar">
+      <ul>
+        <li><a class="nav-link page-link" data-page="main">about</a></li>
+        <li>
+          <a class="nav-link scroll-link" data-section="research">research</a>
+          <ul class="sub-nav" id="research-subnav">
+            <li><a class="scroll-link" data-section="theoretical-rl">Theoretical RL</a></li>
+            <li><a class="scroll-link" data-section="mechanistic-interperetability">Mechanistic Interpretability</a></li>
+            <li><a class="scroll-link" data-section="rl-on-llms">RL on LLMs</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-link scroll-link" data-section="publications">publications</a>
+          <ul class="sub-nav" id="publications-subnav">
+            <li><a class="scroll-link" data-section="year-2028">2028</a></li>
+            <li><a class="scroll-link" data-section="year-2027">2027</a></li>
+            <li><a class="scroll-link" data-section="year-2026">2026</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scroll-link" data-section="contact">contact</a></li>
+        <li class="nav-separator"><a class="nav-link page-link" data-page="notes">notes</a></li>
+        <li><a class="nav-link page-link" data-page="projects">projects</a></li>
+      </ul>
+      <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle">dark mode</button>
+      </div>
+    </nav>
+
+    <main>
+      <div id="main-page" class="page active">
+        <header>
+          <h1>Kislay Aditya Oj</h1>
+          <p class="subtitle">Computer Science and Engineering &nbsp;|&nbsp; MS · IIT Bombay &nbsp;|&nbsp; BTech · IIT Kanpur</p>
+        </header>
+        <section id="about">
+          <h2>About</h2>
+          <div class="about-content">
+            <div class="photo" style="background-image: url('dp.jpg')"></div>
+            <p>I'm Kislay, currently pursuing an MS by Research in Computer Science & Engineering at IIT Bombay, where I'm part of the CFILT Lab. I completed my B.Tech from IIT Kanpur in 2025. I have a strong interest in reinforcement learning, machine learning and language technologies, and enjoy working on problems that involve learning theory, decision making and statistics.</p>
+            <p>Outside of academics, I really enjoy chess, I follow top games closely and play competitively (currently around 1900, though I have touched 2000 before… we don't talk about the rating drop, also it's chess com rating not FIDE, i'm not a genius). I also follow Formula 1, sketch in my free time, and enjoy reading books. Lately, I've been learning to play the piano as well. You can find me on <a href="https://x.com/blindlamp" target="_blank" rel="noopener noreferrer">X</a>, check out my occasional blogs in the <a onclick="showPage('notes')">notes</a> section, or browse through my <a onclick="showPage('projects')">projects</a> to see what I've been working on.</p>
+          </div>
+        </section>
+        <section id="research">
+          <h2>Research</h2>
+          <div class="topic" id="theoretical-rl">
+            <h3>Theoretical Reinforcement Learning</h3>
+            <p>I work on theoretical reinforcement learning with a focus on bandit problems involving hidden structure, such as latent user states or clustered populations. My research studies how offline models and shared structure can be combined with online exploration to design sample efficient algorithms with provable regret guarantees.</p>
+          </div>
+          <div class="topic" id="mechanistic-interperetability">
+            <h3>Mechanistic Interpretability</h3>
+            <p>I investigate how neural networks, especially LLMs, implement internal computation mechanisms rather than just observing input output behavior. This includes studying representation geometry, transformer circuit structure, and causal mechanisms behind reasoning and figurative language, while exploring SVD-based decomposition of internal representations as a promising direction for understanding how such computations arise.</p>
+          </div>
+          <div class="topic" id="rl-on-llms">
+            <h3>Reinforcement Learning for Adaptive LLM Agents</h3>
+            <p>I study how reinforcement learning ideas can be used to help large language model (LLM) agents improve from feedback during real use. This work focuses on test time adaptation using reflection, memory, and personalization rather than model fine tuning. As part of the Flipkart–IIT Bombay collaboration, my goal is to build LLM agents that become more reliable and user aware over time.</p>
+          </div>
+        </section>
+        <section id="publications">
+          <h2>Publications</h2>
+          <p>working on it</p>
+        </section>
+        <section id="contact">
+          <h2>Contact</h2>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:kislay@cse.iitb.ac.in">kislay@cse.iitb.ac.in</a></p>
+            <p><strong>Lab:</strong> CFILT Lab, Room 401, Computer Centre<br />Department of Computer Science<br />Indian Institute of Technology, Bombay</p>
+            <p><a href="#">Google Scholar</a> · <a href="https://github.com/safffrron" target="_blank">GitHub</a> · <a href="https://x.com/blindlamp" target="_blank">Twitter</a> · <a href="https://www.linkedin.com/in/kislayadityaoj/" target="_blank">LinkedIn</a></p>
+          </div>
+        </section>
+        <footer><p>Last Updated - December, 2025</p></footer>
+      </div>
+
+      <div id="notes-page" class="page">
+        <header>
+          <h1>Notes</h1>
+          <p class="subtitle">Scattered thoughts and reflections. Click title to expand.</p>
+        </header>
+        <div id="notes-list">
+          <ul class="note-list">
+            <li><div class="note-title" onclick="showNote('note4')">Attending my first Conference</div><div class="note-date">December 2025</div><div class="note-excerpt">Volunteering at AACL 2025 gave me a behind the scenes view of how conferences actually run, the chaos, coordination, people and conversations that never show up in papers or schedules.</div></li>
+            <li><div class="note-title" onclick="showNote('note3')">Book this week #1 - The Alchemist</div><div class="note-date">Paul Cohelo · December 2025</div><div class="note-excerpt">A short and simple story about chasing dreams and learning from the journey. Predictable at times, but still a solid and meaningful read, especially for beginners.</div></li>
+            <li><div class="note-title" onclick="showNote('note2')">Tier List #2 - Movies</div><div class="note-date">September 2025</div><div class="note-excerpt">Personal thoughts on movies and TV shows based on impact rather than objectivity. Some unforgettable, some enjoyable, some overhyped, all filtered through mood, timing and questionable taste.</div></li>
+            <li><div class="note-title" onclick="showNote('note1')">Tier List #1 - Anime</div><div class="note-date">September 2025</div><div class="note-excerpt">A very subjective take on anime I've watched over the years, ranked less by technical quality and more by how much they stuck with me. Strongly biased by characters, long term impact and pure vibes.</div></li>
+          </ul>
+        </div>
+        <div id="note4-full" class="note-full" style="display: none">
+          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
+          <div class="note-title">Attending my first Conference</div>
+          <div class="note-date">December 2025</div>
+          <div class="note-content">
+            <p>So last 6 months was full of me receiving insights about research, phd applications, conferences and etc. and generally trying to understand where I fit into all of this. So when AACL 2025 was announced, happening at our own campus and organized largely through our lab, there was no way I was going to miss the chance to volunteer. Getting to observe and work closely with researchers and organizers felt like an opportunity that does not come often.</p>
+            <p>Preparations started months in advance. There were regular meetings, planning sessions, and constant coordination to make sure things would run smoothly. I did not attend every meeting, but I stayed updated and could see how much effort people like Sushma ma'am, Deepak sir, Gajanan sir and Dhiren sir were putting in to get everything right. Watching that process itself was a learning experience.</p>
+            <p>The conference ran from December 19 to 24, right in the middle of winter break. I went home briefly and then came back to campus on the 19th, which turned out to be an adventure in itself. Flights were chaotic, accommodation was uncertain and things were generally messy. Somehow, everything worked out. At this point, the lab honestly feels more like home than my hostel room.</p>
+            <p>I was initially assigned to the registration desk, but later moved to the tech team, handling audio, microphones, Zoom and cameras for oral presentations and talks. On the first day, I was completely lost. I picked up my volunteer tee and ID, and mostly followed Sharath around trying to understand what was going on. The day started with the opening ceremony and keynote in the main auditorium, after which we moved to Room 21 for oral presentations.</p>
+            <p>That first day, I mostly observed. We had a detailed run-of-the-show sheet that helped keep things on track. There were some technical hiccups, but nothing major. Most of the time, I was just passing microphones around and making sure Zoom was running. Other rooms were not as lucky and faced serious audio and connectivity issues, so we were grateful ours went smoothly. Between sessions, there were coffee and lunch breaks. The food was surprisingly good, apparently from Gulmohar. I liked the atmosphere of people discussing work and interests with each other. I did not talk much myself, as I was unsure of what I would even say given how early I am in my research.</p>
+            <p>Day 2 went much more smoothly. It was mostly me, Vijendra and Sharath handling Room 21. That day also included CFILT Day, where alumni gathered to remember Prof. Pushpak Bhattacharyya and share memories. The highlight was the cultural event and the gala dinner. The dinner was great, and I managed to talk to a few professors. I still wonder how many of those conversations will actually turn into email replies, but it was enjoyable nonetheless.</p>
+            <p>Day 3 was rough. Only Sharath showed up early in the morning, and he had to handle three rooms alone. Sessions started late, and things were chaotic. I had assumed he would set things up and I would join later, but after seeing how bad it got, I made it a point to come early for the remaining days. The rest of the day went better, and we ended with the closing ceremony, award distribution and a photoshoot.</p>
+            <p>The real volunteering challenge began after that. The next day had eleven parallel workshops, each needing tech support. By then, my intern phase was over and I was assigned to handle an entire room on my own. My room, Room 14, had delayed setup, microphone issues and general confusion. Thankfully, the workshop presenters were understanding. Attendance was not very high, but we managed to complete the sessions without major issues.</p>
+            <p>By Day 4 evening, we were exhausted. Me, Vijendra, and Sharath went to Versova beach to unwind and later visited a cat cafe. It was a much needed break and one of the nicest moments of the week.</p>
+            <p>Day 5 was easily the best. I deliberately chose to be in Room 21 because Prof. Ashutosh Modi was running a workshop there. He is the reason I got into research and was my professor at IIT Kanpur. To my surprise, he remembered me. I spent most of the day with his students, who were all extremely sharp and we even discussed a potential project together. I knew Prof. Modi was chill, but this was on another level. I did have a small moment of regret about not staying back at IIT Kanpur, but that is life.</p>
+            <p>Overall, volunteering at AACL was an intense but rewarding experience. From waking up at 6 in the morning to working late into the night, I got to see a conference from an organizer's perspective. The academic exposure was great, but the networking and informal conversations were the real highlight. By the final day, I had spoken to students from different countries and learned how similar and different research culture can be across places. Next time, I would like to be on the other side of the conference as an attendee. This was fun and a great experience. Kudos to the entire team.</p>
+          </div>
+        </div>
+        <div id="note3-full" class="note-full" style="display: none">
+          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
+          <div class="note-title">Book this week #1 - The Alchemist</div>
+          <div class="note-date">Paul Cohelo · December 2025</div>
+          <div class="note-content">
+            <p>The Alchemist is about a boy who wants to follow his dreams and the different obstacles, experiences, and lessons he encounters along the way. The story is straightforward and easy to follow, and most of its ideas are conveyed through simple events rather than complex plot twists.</p>
+            <p>I think this book works especially well as a starter read. It doesn't demand much from the reader in terms of attention or background, and the lessons are communicated clearly. In many places, the book feels less like a story meant to surprise you and more like a lesson you're supposed to reflect on while reading. Because of this, it helps to keep an open mind rather than treating it as something to rush through.</p>
+            <p>From a broader view, the story is fairly predictable, particularly if you are familiar with similar themes in anime or other coming-of-age narratives. This can make parts of the book feel slow or unexciting. Still, considering how old the book is, that predictability is not too surprising and doesn't completely take away from the experience.</p>
+            <p>One thing I liked is that the book is short and well-paced. You can finish it in one sitting without feeling tired or overwhelmed. Even if the ideas are not entirely new, the book presents them in a calm and readable way. Overall, I would recommend The Alchemist. It's not a deep or complex book, but it's an easy and thoughtful read that can be enjoyable, especially if you're just getting into reading.</p>
+            <p>Here are some quotes I liked from the book:</p>
+            <blockquote><p>"It's the possibility of having a dream come true that makes life interesting."</p></blockquote>
+            <blockquote><p>"If you start out by promising what you don't even have yet, you'll lose your desire to work towards getting it."</p></blockquote>
+            <blockquote><p>"I weep for Narcissus, but I never noticed that Narcissus was beautiful. I weep because, each time he knelt beside my banks, I could see, in the depths of his eyes, my own beauty reflected."</p></blockquote>
+            <p>Rating: ★★★★★★☆☆☆☆ (6/10)</p>
+          </div>
+        </div>
+        <div id="note2-full" class="note-full" style="display: none">
+          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
+          <div class="note-title">Tier List #2 - Movies</div>
+          <div class="note-date">September 2025</div>
+          <div class="note-content">
+            <div class="tier-list">
+              <div class="tier-row"><div class="tier-label">S</div><div class="tier-items"><span class="tier-item">Game of Thrones</span><span class="tier-item">Breaking Bad + El Camino</span><span class="tier-item">Stranger Things</span><span class="tier-item">Young Sheldon</span><span class="tier-item">Sherlock</span><span class="tier-item">Harry Potter Series</span><span class="tier-item">Interstellar</span><span class="tier-item">Predestination</span><span class="tier-item">Oppenheimer</span><span class="tier-item">Inception</span><span class="tier-item">The Boys</span><span class="tier-item">Dark Knight Trilogy + Joker</span><span class="tier-item">Money Heist</span><span class="tier-item">Shutter Island</span><span class="tier-item">Fight Club</span></div></div>
+              <div class="tier-row"><div class="tier-label">A</div><div class="tier-items"><span class="tier-item">The Queen's Gambit</span><span class="tier-item">Source Code</span><span class="tier-item">Alice in Borderland</span><span class="tier-item">Suits</span><span class="tier-item">Forrest Gump</span><span class="tier-item">Catch Me If You Can</span><span class="tier-item">True Detective</span><span class="tier-item">Loudermilk</span><span class="tier-item">Modern Family</span><span class="tier-item">The Nice Guys</span><span class="tier-item">The Hangover Trilogy</span><span class="tier-item">Madagascar</span></div></div>
+              <div class="tier-row"><div class="tier-label">B</div><div class="tier-items"><span class="tier-item">The Truman Show</span><span class="tier-item">Everything Everywhere All At Once</span><span class="tier-item">Wednesday</span><span class="tier-item">Black Mirror</span><span class="tier-item">The Imitation Game</span><span class="tier-item">Aspirants</span><span class="tier-item">October Sky</span><span class="tier-item">Ready Player One</span><span class="tier-item">Shang-Chi</span><span class="tier-item">Gen V</span><span class="tier-item">Moon Knight</span></div></div>
+              <div class="tier-row"><div class="tier-label">C</div><div class="tier-items"><span class="tier-item">Laapataa Ladies</span><span class="tier-item">Reacher</span><span class="tier-item">1899</span><span class="tier-item">Coherence</span><span class="tier-item">The Discovery</span><span class="tier-item">The Dictator</span><span class="tier-item">Paul</span><span class="tier-item">Idiocracy</span><span class="tier-item">Big Hero 6</span><span class="tier-item">21</span><span class="tier-item">Drishyam</span><span class="tier-item">Get Out</span><span class="tier-item">Zootopia</span></div></div>
+            </div>
+          </div>
+        </div>
+        <div id="note1-full" class="note-full" style="display: none">
+          <a class="back-link" onclick="showNotesList()">← Back to all notes</a>
+          <div class="note-title">Tier List #1 - Anime</div>
+          <div class="note-date">September 2025</div>
+          <div class="note-content">
+            <div class="tier-list">
+              <div class="tier-row"><div class="tier-label">S</div><div class="tier-items"><span class="tier-item">One Piece</span><span class="tier-item">Naruto</span><span class="tier-item">Bleach</span><span class="tier-item">Haikyuu</span><span class="tier-item">Steins Gate</span><span class="tier-item">Hunter x Hunter</span><span class="tier-item">FMAB</span><span class="tier-item">Jujutsu Kaisen</span><span class="tier-item">Scissors Seven</span><span class="tier-item">To Be Hero X</span><span class="tier-item">Frieren</span><span class="tier-item">Black Clover</span><span class="tier-item">Sakamoto Days</span><span class="tier-item">Attack on Titan</span></div></div>
+              <div class="tier-row"><div class="tier-label">A</div><div class="tier-items"><span class="tier-item">One Punch Man</span><span class="tier-item">Wistoria</span><span class="tier-item">Demon Slayer</span><span class="tier-item">Slime Reincarnation</span><span class="tier-item">Death Note</span><span class="tier-item">Mob Psycho</span><span class="tier-item">Mashle</span><span class="tier-item">Ossan Newbie Adventurer</span><span class="tier-item">The Apothecary Diaries</span><span class="tier-item">Tower of God</span><span class="tier-item">Blue Lock</span><span class="tier-item">Re:Zero</span><span class="tier-item">Chainsaw Man</span></div></div>
+              <div class="tier-row"><div class="tier-label">B</div><div class="tier-items"><span class="tier-item">Kaiju No. 8</span><span class="tier-item">The Elusive Samurai</span><span class="tier-item">Devil May Cry</span><span class="tier-item">Dr Stone</span><span class="tier-item">Dandadan</span><span class="tier-item">About the Movement of the Earth</span><span class="tier-item">Shangri-La Frontier</span><span class="tier-item">The Promised Neverland</span><span class="tier-item">My Hero Academia</span><span class="tier-item">Summertime Rendering</span></div></div>
+              <div class="tier-row"><div class="tier-label">C</div><div class="tier-items"><span class="tier-item">Mushoku Tensei</span><span class="tier-item">Roshidere</span><span class="tier-item">God of High School</span><span class="tier-item">Record of Ragnarok</span><span class="tier-item">Classroom of the Elite</span><span class="tier-item">Beginning After the End</span><span class="tier-item">Rise of the Shield Hero</span><span class="tier-item">Spy x Family</span><span class="tier-item">Erased</span><span class="tier-item">Komi San CC</span><span class="tier-item">Tokyo Revengers</span><span class="tier-item">Boruto</span><span class="tier-item">Uzumaki</span><span class="tier-item">My Dress Up Darling</span></div></div>
+              <div class="tier-row"><div class="tier-label">*</div><div class="tier-items"><span class="tier-item">Lord of Mysteries</span><span class="tier-item">Lazarus</span><span class="tier-item">Gachiakuta</span><span class="tier-item">Takopi's Original Sin</span><span class="tier-item">The Fragrant Flower Blooms with Dignity</span></div></div>
+            </div>
+          </div>
+        </div>
+        <footer><p>Last Updated - December, 2025</p></footer>
+      </div>
+
+      <div id="projects-page" class="page">
+        <header>
+          <h1>Projects</h1>
+          <p class="subtitle">Software · Datasets · Tools</p>
+        </header>
+        <ul class="project-list">
+          <li><div class="project-title">Analysis of EBMs — Boltzmann Machines</div><div class="project-meta">Energy-Based Models · Python · 2025</div><div class="project-desc">Experimental study of energy-based models (Boltzmann machines) investigating the effect of Contrastive Divergence (CD) steps on sample quality. Includes analysis scripts, configurations, and result outputs for varying CD schedules and sampling strategies.</div><div class="project-links"><a href="https://github.com/safffrron/boltzmann-machine" target="_blank" rel="noopener noreferrer">GitHub</a></div></li>
+          <li><div class="project-title">Know.Study.Help</div><div class="project-meta">Python · Flask · Web · 2025</div><div class="project-desc">A lightweight web platform for academic management and study workflows. The repo contains a Flask backend (app.py / server.py), HTML templates and static assets, and utilities to manage study-related content and pages. Built as a small full-stack project for course/organisational use.</div><div class="project-links"><a href="https://github.com/safffrron/Know.Study.Help/tree/backup_branch/Project_SL" target="_blank" rel="noopener noreferrer">GitHub</a></div></li>
+          <li><div class="project-title">Transliteration (Roman → Devanagari)</div><div class="project-meta">Transliteration · LSTM / Transformer · Python · 2025</div><div class="project-desc">Code and experiments for Hindi transliteration (Roman to Devanagari). The repo includes LSTM and transformer checkpoints, sampling and evaluation scripts, and a short paper/report describing the approach. A demo script is provided for quick sampling; some LLM-based inference paths require an NVIDIA API key (noted in the README).</div><div class="project-links"><a href="https://github.com/safffrron/transliteration" target="_blank" rel="noopener noreferrer">GitHub</a></div></li>
+          <li><div class="project-title">Prompt Tuning</div><div class="project-meta">Prompt tuning · Experimental · Python · 2025</div><div class="project-desc">Research-and-development code exploring prompt / prefix tuning approaches for LLMs. Contains experimental code, notebooks and utilities used to run prompt tuning experiments and compare prompt-based interventions across models.</div><div class="project-links"><a href="https://github.com/safffrron/prompt_tuning" target="_blank" rel="noopener noreferrer">GitHub</a></div></li>
+          <li><div class="project-title">LLM-Based Scraper for Amazon Order Information</div><div class="project-meta">Python · Selenium · LLMs · 2024</div><div class="project-desc">Built an automation pipeline to extract structured order history data from Amazon using Selenium. Integrated an open-source LLM (GPT-Neo) to process and structure raw HTML into JSON/CSV formats, with support for swapping in stronger models. Focused on robustness, security, and scalability.</div><div class="project-links"><a href="https://github.com/safffrron/LLM-Scraper" target="_blank">GitHub</a></div></li>
+          <li><div class="project-title">Curiosity-Driven Exploration via Self-Supervised Prediction</div><div class="project-meta">Reinforcement Learning · PyTorch · 2024</div><div class="project-desc">Implemented the Intrinsic Curiosity Module (ICM) across DQN, A3C, and PPO to study exploration in sparse-reward environments. Demonstrated how intrinsic rewards improve learning efficiency and policy performance across different RL algorithms.</div><div class="project-links"><a href="https://github.com/safffrron/ICML_Curiosity_Exploration" target="_blank">GitHub</a></div></li>
+          <li><div class="project-title">Exploration and Analysis of Deep Reinforcement Learning Methods</div><div class="project-meta">Deep RL · PyTorch · 2024</div><div class="project-desc">A comprehensive study and implementation of classical and deep RL algorithms including bandits, Monte Carlo, TD methods, SARSA, Q-learning, DQN variants, PPO, TD3, and DDPG. Includes experiments, comparisons, and visual analysis.</div><div class="project-links"><a href="https://github.com/safffrron/Analysis-of-Deep-Reinforcement-Learning" target="_blank">GitHub</a></div></li>
+          <li><div class="project-title">Computer Vision using C</div><div class="project-meta">C · Python · Computer Vision · 2023</div><div class="project-desc">Implemented core image processing and computer vision algorithms in C with Python bindings. Covered filtering, convolutions, edge detection, hybrid images, and color space transformations, with visual validation through experiments.</div><div class="project-links"><a href="https://github.com/safffrron/Computer-Vision-using-C" target="_blank">GitHub</a></div></li>
+          <li><div class="project-title">Tour De OAAR – Astronomy Club, IIT Kanpur</div><div class="project-meta">Mentorship · Python · Web APIs · 2023</div><div class="project-desc">Mentored a team of students on Python programming and automation projects for the campus observatory. Guided development of tools such as weather monitoring systems using APIs and JSON, alongside teaching astronomy fundamentals and telescope operations.</div><div class="project-links"><a href="https://github.com/safffrron/TourDeOAAR" target="_blank">GitHub</a></div></li>
         </ul>
+        <footer><p>Last Updated - December, 2025</p></footer>
+      </div>
+    </main>
+  </div>
 
-        <div class="theme-toggle-container">
-          <button id="theme-toggle" class="theme-toggle">dark mode</button>
-        </div>
-      </nav>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const defaultTheme = 'light';
+    const initialTheme = savedTheme || defaultTheme;
+    setTheme(initialTheme);
 
-      <main>
-        <!-- Main Page -->
-        <div id="main-page" class="page active">
-          <header>
-            <h1>Kislay Aditya Oj</h1>
-            <p class="subtitle">
-              Computer Science and Engineering &nbsp;|&nbsp; MS · IIT Bombay
-              &nbsp;|&nbsp; BTech · IIT Kanpur
-            </p>
-            <!-- <p class="subtitle">BTech · IIT Kanpur</p> -->
-          </header>
+    function setTheme(theme) {
+      htmlElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      themeToggle.textContent = theme === 'dark' ? 'light mode' : 'dark mode';
+    }
 
-          <section id="about">
-            <h2>About</h2>
-            <div class="about-content">
-              <div class="photo" style="background-image: url('dp.jpg')"></div>
-              <p>
-                I’m Kislay, currently pursuing an MS by Research in Computer
-                Science & Engineering at IIT Bombay, where I’m part of the CFILT
-                Lab. I completed my B.Tech from IIT Kanpur in 2025. I have a
-                strong interest in reinforcement learning, machine learning and
-                language technologies, and enjoy working on problems that
-                involve learning theory, decision making and statistics.
-              </p>
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
 
-              <p>
-                Outside of academics, I really enjoy chess, I follow top games
-                closely and play competitively (currently around 1900, though I
-                have touched 2000 before… we don't talk about the rating drop,
-                also it's chess com rating not FIDE, i'm not a genius). I also
-                follow Formula 1, sketch in my free time, and enjoy reading
-                books. Lately, I've been learning to play the piano as well. You
-                can find me on
-                <a
-                  href="https://x.com/blindlamp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >X</a
-                >, check out my occasional blogs in the
-                <a href="notes.html">notes</a> section, or browse through my
-                <a href="projects.html">projects</a>
-                to see what I've been working on.
-              </p>
-            </div>
-          </section>
+    function showPage(pageName) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageName + '-page').classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      window.scrollTo(0, 0);
+    }
 
-          <section id="research">
-            <h2>Research</h2>
+    function showNote(noteId) {
+      document.getElementById('notes-list').style.display = 'none';
+      document.querySelectorAll('.note-full').forEach(note => {
+        note.style.display = 'none';
+      });
+      document.getElementById(noteId + '-full').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
 
-            <div class="topic" id="theoretical-rl">
-              <h3>Theoretical Reinforcement Learning</h3>
-              <p>
-                I work on theoretical reinforcement learning with a focus on
-                bandit problems involving hidden structure, such as latent user
-                states or clustered populations. My research studies how offline
-                models and shared structure can be combined with online
-                exploration to design sample efficient algorithms with provable
-                regret guarantees.
-              </p>
-            </div>
+    function showNotesList() {
+      document.getElementById('notes-list').style.display = 'block';
+      document.querySelectorAll('.note-full').forEach(note => {
+        note.style.display = 'none';
+      });
+      window.scrollTo(0, 0);
+    }
 
-            <div class="topic" id="mechanistic-interperetability">
-              <h3>Mechanistic Interpretability</h3>
-              <p>
-                I investigate how neural networks, especially LLMs, implement
-                internal computation mechanisms rather than just observing input
-                output behavior. This includes studying representation geometry,
-                transformer circuit structure, and causal mechanisms behind
-                reasoning and figurative language, while exploring SVD-based
-                decomposition of internal representations as a promising
-                direction for understanding how such computations arise.
-              </p>
-            </div>
+    function toggleAbstract(element) {
+      const abstract = element.parentElement.nextElementSibling;
+      abstract.classList.toggle('show');
+      element.textContent = abstract.classList.contains('show') ? '[hide]' : '[abstract]';
+    }
 
-            <div class="topic" id="rl-on-llms">
-              <h3>Reinforcement Learning for Adaptive LLM Agents</h3>
-              <p>
-                I study how reinforcement learning ideas can be used to help
-                large language model (LLM) agents improve from feedback during
-                real use. This work focuses on test time adaptation using
-                reflection, memory, and personalization rather than model fine
-                tuning. As part of the Flipkart–IIT Bombay collaboration, my
-                goal is to build LLM agents that become more reliable and user
-                aware over time.
-              </p>
-            </div>
-          </section>
+    function getCurrentPage() {
+      if (document.getElementById('main-page').classList.contains('active')) return 'main';
+      if (document.getElementById('notes-page').classList.contains('active')) return 'notes';
+      if (document.getElementById('projects-page').classList.contains('active')) return 'projects';
+      return 'main';
+    }
 
-          <section id="publications">
-            <h2>Publications</h2>
-            working on it
-            <!-- <h3 id="year-2024">2024</h3>
-          <ul class="paper-list">
-            <li>
-              <div class="paper-title">Paper Title: An Important Result in Your Field</div>
-              <div class="paper-authors">Author 1, Author 2, Your Name</div>
-              <div class="paper-venue">Conference Name 2024</div>
-              <div class="paper-links">
-                <a href="#">PDF</a>
-                <a href="#">arXiv</a>
-                <span class="toggle-abstract" onclick="toggleAbstract(this)">[abstract]</span>
-              </div>
-              <div class="abstract">
-                This paper addresses a fundamental problem in [field]. We propose a novel approach that 
-                combines [method A] with [method B] to achieve [result]. Our theoretical analysis proves 
-                that the algorithm runs in polynomial time and achieves optimal guarantees.
-              </div>
-            </li>
-          </ul>
+    document.querySelectorAll('.page-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.getAttribute('data-page');
+        showPage(page);
+        this.classList.add('active');
+        document.querySelectorAll('.sub-nav').forEach(subnav => {
+          subnav.classList.remove('show');
+        });
+      });
+    });
 
-          <h3 id="year-2023">2023</h3>
-          <ul class="paper-list">
-            <li>
-              <div class="paper-title">Another Significant Contribution to the Field</div>
-              <div class="paper-authors">Your Name, Collaborator Name</div>
-              <div class="paper-venue">Journal Name 2023</div>
-              <div class="paper-links">
-                <a href="#">PDF</a>
-                <a href="#">arXiv</a>
-                <span class="toggle-abstract" onclick="toggleAbstract(this)">[abstract]</span>
-              </div>
-              <div class="abstract">
-                We study the problem of [problem description]. By developing a new technique based on 
-                [technique name], we show that [main result]. This result has implications for [applications].
-              </div>
-            </li>
-          </ul>
-
-          <h3 id="year-2022">2022</h3>
-          <ul class="paper-list">
-            <li>
-              <div class="paper-title">Solving Hard Problems in Multi-Agent Systems</div>
-              <div class="paper-authors">Your Name, Co-author 1, Co-author 2</div>
-              <div class="paper-venue">Conference Name 2022</div>
-              <div class="paper-links">
-                <a href="#">PDF</a>
-                <a href="#">Code</a>
-                <span class="toggle-abstract" onclick="toggleAbstract(this)">[abstract]</span>
-              </div>
-              <div class="abstract">
-                Multi-agent coordination remains a challenging problem. In this work, we introduce a 
-                scalable algorithm that can handle large-scale scenarios with hundreds of agents.
-              </div>
-            </li>
-          </ul> -->
-          </section>
-
-          <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-info">
-              <p>
-                <strong>Email:</strong>
-                <a href="mailto:kislay@cse.iitb.ac.in">kislay@cse.iitb.ac.in</a>
-              </p>
-              <p>
-                <strong>Lab:</strong> CFILT Lab, Room 401, Computer Centre<br />
-                Department of Computer Science<br />
-                Indian Institute of Technology, Bombay
-              </p>
-              <p>
-                <a href="#">Google Scholar</a> ·
-                <a href="https://github.com/safffrron" target="_blank"
-                  >GitHub</a
-                >
-                ·
-                <a href="https://x.com/blindlamp" target="_blank">Twitter</a>
-                ·
-                <a href="https://www.linkedin.com/in/kislayadityaoj/" target="_blank">LinkedIn</a>
-              </p>
-            </div>
-          </section>
-
-          <footer>
-            <p>Last Updated - December, 2025</p>
-          </footer>
-        </div>
-      </main>
-    </div>
-
-    <script src="script.js"></script>
-    <script>
-      // Handle hash navigation on page load
-      window.addEventListener("load", function () {
-        const hash = window.location.hash.slice(1);
-        if (hash) {
-          const target = document.getElementById(hash);
-          if (target) {
-            setTimeout(() => {
-              window.scrollTo({
-                top: target.offsetTop - 20,
-                behavior: "smooth",
-              });
-            }, 100);
-          }
+    document.querySelectorAll('.scroll-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const section = this.getAttribute('data-section');
+        const mainPage = document.getElementById('main-page');
+        if (!mainPage.classList.contains('active')) {
+          showPage('main');
+        }
+        const target = document.getElementById(section);
+        if (target) {
+          setTimeout(() => {
+            window.scrollTo({
+              top: target.offsetTop - 20,
+              behavior: 'smooth'
+            });
+          }, 100);
         }
       });
-    </script>
-  </body>
+    });
+
+    function initializeNavTracking() {
+      const mainPage = document.getElementById('main-page');
+      if (!mainPage) return;
+      const sections = document.querySelectorAll('#main-page section');
+      const navLinks = document.querySelectorAll('.scroll-link');
+      
+      function updateNav() {
+        if (!mainPage.classList.contains('active')) {
+          return;
+        }
+        let current = '';
+        sections.forEach(section => {
+          if (window.scrollY >= section.offsetTop - 100) {
+            current = section.getAttribute('id');
+          }
+        });
+        document.querySelectorAll('.sub-nav').forEach(subnav => {
+          subnav.classList.remove('show');
+        });
+        document.querySelectorAll('.page-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const section = link.getAttribute('data-section');
+          if (section === current) {
+            link.classList.add('active');
+            const parentSection = ['research', 'publications'].find(s => current.startsWith(s) || current === s);
+            if (parentSection) {
+              const subnav = document.getElementById(parentSection + '-subnav');
+              if (subnav) {
+                subnav.classList.add('show');
+                const parentLink = document.querySelector(`.scroll-link[data-section="${parentSection}"]`);
+                if (parentLink) {
+                  parentLink.classList.add('active');
+                }
+              }
+            }
+          }
+        });
+      }
+      window.addEventListener('scroll', updateNav);
+      window.addEventListener('load', updateNav);
+    }
+
+    initializeNavTracking();
+
+    window.addEventListener('load', function() {
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        const target = document.getElementById(hash);
+        if (target) {
+          setTimeout(() => {
+            window.scrollTo({
+              top: target.offsetTop - 20,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      }
+    });
+  </script>
+</body>
 </html>
