@@ -2,8 +2,7 @@ const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
 const contentPages = {
   notes: 'content/notes.html',
-  projects: 'content/projects.html',
-  'vibe-projects': 'content/vibe-projects.html'
+  projects: 'content/projects.html'
 };
 const loadedPages = new Set();
 
@@ -87,7 +86,6 @@ function getCurrentPage() {
   if (document.getElementById('main-page').classList.contains('active')) return 'main';
   if (document.getElementById('notes-page').classList.contains('active')) return 'notes';
   if (document.getElementById('projects-page').classList.contains('active')) return 'projects';
-  if (document.getElementById('vibe-projects-page').classList.contains('active')) return 'vibe-projects';
   return 'main';
 }
 
